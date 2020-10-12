@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <router-view v-slot="slotProps"> 
+    <transition name="route" mode="out-in">
+        <component :is="slotProps.Component"></component>
+    </transition>
+  </router-view>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+});
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+/**Global styles */
+:root {
+  --primary-color: #f5a70c;
+  --dark-color: #5c4300;
+  --light-color: #ffd92eef;
+  --danger-color: #cc0418;
+  --success-color: #2fac09;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: rgb(226, 223, 207);
 }
 </style>
